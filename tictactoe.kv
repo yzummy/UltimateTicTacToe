@@ -1,3 +1,5 @@
+#:kivy 1.10.1
+
 <TicTacToeGrid>:
     cols: 3 # Number of columns
 
@@ -7,8 +9,13 @@
 <UltimateTicTacToeGrid>:
     spacing: 5
     cols: 3 # Number of columns
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-<Separator@UltimateTicTacToeGrid>
+    size_hint: 0.5, 0.7
+
+    # pos:  (self.parent.x + 10, self.parent.y + 10) if self.parent else (100, 100)
+
+<Separator@UltimateTicTacToeGrid>:
     size_hint_y: None
     thickness: 3
     margin: 2
@@ -20,3 +27,37 @@
         Rectangle:
             pos: self.x + self.margin, self.y + self.margin + 1
             size: self.width - 2 * self.margin , self.thickness
+
+<GameWindow>:
+    Button:
+        text:'New Game'
+        size_hint: 0.15, 0.08
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        #on_press: 
+
+    Button:
+        text:'Set P2 to Human'
+        size_hint: 0.15, 0.08
+        pos_hint: {'center_x': 0.333, 'center_y': 0.1}
+        on_press: root.set_human()
+        
+    Button:
+        text:'Set P2 to CPU'
+        size_hint: 0.15, 0.08
+        pos_hint: {'center_x': 0.667, 'center_y': 0.1}
+        on_press: root.set_ai()
+
+    Label:
+        id: xlabel
+        pos_hint: {'center_x': .125, 'center_y': .85}
+        font_size: 25
+        text: "X Score:"
+
+    Label:
+        id: olabel
+        pos_hint: {'center_x': .875, 'center_y': .85}
+        font_size: 25
+        text: "O Score:"
+
+
+
